@@ -1,7 +1,9 @@
 #include <ncurses.h>
+#include "character.h"
 
 int main(){
     WINDOW *my_win;
+    t_mage mage;
     int row,col, ch;
     int centerx, centery;
 
@@ -15,7 +17,9 @@ int main(){
     centerx = row/2;
     centery = (col/2)-1;
 
-    mvprintw(centerx, centery, "|0|");
+    mage = init_mage(centerx, centery);
+
+    mvprintw(mage.x, mage.y, "%s", mage.icon);
 
     refresh();	
 
@@ -27,29 +31,29 @@ int main(){
             case KEY_LEFT:
                 clear();
                 // printw("entrei");
-                centery--;
-                mvprintw(centerx, centery, "|0|");
+                mage.y--;
+                mvprintw(mage.x, mage.y, "%s", mage.icon);
                 break;
             
             case KEY_UP:
                 clear();
                 // printw("entrei");
-                centerx--;
-                mvprintw(centerx, centery, "|0|");
+                mage.x--;
+                mvprintw(mage.x, mage.y, "%s", mage.icon);
                 break;
 
             case KEY_DOWN:
                 clear();
                 // printw("entrei");
-                centerx++;
-                mvprintw(centerx, centery, "|0|");
+                mage.x++;
+                mvprintw(mage.x, mage.y, "%s", mage.icon);
                 break;
             
             case KEY_RIGHT:
                 clear();
                 // printw("entrei");
-                centery++;
-                mvprintw(centerx, centery, "|0|");
+                mage.y++;
+                mvprintw(mage.x, mage.y, "%s", mage.icon);
                 break;
         }
 
