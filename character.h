@@ -46,4 +46,8 @@ void move_enemy(t_enemy *enemy, t_mage* mage);
 
 void detect_collision(t_enemy *enemy, t_mage* mage);
 
+int game_is_over(t_enemy *enemy, t_mage* mage);
+
+void end_game(int* status,int *x,int *y);
+
 #endif
